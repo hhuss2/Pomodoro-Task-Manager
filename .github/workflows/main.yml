@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Heroku CLI
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
+        run: curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Login to Heroku       # Use Heroku login command
+      - name: Login to Heroku
         run: heroku login -i
 
+      - name: Set up Heroku remote
+        run: heroku git:remote -a pomodoro-task-manager
+
       - name: Deploy to Heroku
-        run: |
-          heroku git:remote -a pomodoro-task-manager
-          git push heroku main
+        run: git push heroku main
