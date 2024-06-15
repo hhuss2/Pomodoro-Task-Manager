@@ -1,0 +1,24 @@
+{
+  "name": "pomodoro-task-manager",
+  "version": "1.0.0",
+  "description": "A Pomodoro Task Manager application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhuss2/Pomodoro-Task-Manager.git"
+  },
+  "author": "Hamzeh Hussein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hhuss2/Pomodoro-Task-Manager/issues"
+  },
+  "homepage": "https://github.com/hhuss2/Pomodoro-Task-Manager#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
