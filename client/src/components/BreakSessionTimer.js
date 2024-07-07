@@ -20,8 +20,10 @@ const BreakSessionTimer = ({ defaultDuration, onStart }) => {
   }, [isRunning, timeLeft]);
 
   const handleStart = () => {
-    setIsRunning(true);
-    onStart(timeLeft);
+    setIsRunning(prevIsRunning => !prevIsRunning);
+    if (!isRunning) {
+      onStart(timeLeft);
+    }
   };
 
   const handlePause = () => {
@@ -53,9 +55,19 @@ const BreakSessionTimer = ({ defaultDuration, onStart }) => {
     <div className="break-session-timer">
       <div className="time-display">{formatTime(timeLeft)}</div>
       <div className="timer-controls">
-        <button onClick={handleStart}>Start Break</button>
-        <button onClick={handlePause}>Pause</button>
-        <button onClick={handleReset}>Reset</button>
+        {isRunning ? (
+          <>
+            <button onClick={handlePause}>Pause</button>
+            <button onClick={handleReset}>Reset</button>
+          </>
+        ) : (
+          <>
+            <button onClick={handleStart}>
+              {timeLeft === defaultDuration * 60 ? 'Start Break' : 'Continue'}
+            </button>
+            <button onClick={handleReset}>Reset</button>
+          </>
+        )}
         <button onClick={handleIncrease}>+</button>
         <button onClick={handleDecrease}>-</button>
       </div>

@@ -32,6 +32,10 @@ const Timer = ({ duration }) => {
     setTimeLeft(duration);
   };
 
+  const handleContinue = () => {
+    setIsRunning(true);
+  };
+
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -42,9 +46,21 @@ const Timer = ({ duration }) => {
     <div className="timer">
       <div className="time-display">{formatTime(timeLeft)}</div>
       <div className="timer-controls">
-        <button onClick={handleStart}>Start</button>
-        <button onClick={handlePause}>Pause</button>
-        <button onClick={handleReset}>Reset</button>
+        {isRunning ? (
+          <>
+            <button onClick={handlePause}>Pause</button>
+            <button onClick={handleReset}>Reset</button>
+          </>
+        ) : (
+          <>
+            {timeLeft === duration ? (
+              <button onClick={handleStart}>Start</button>
+            ) : (
+              <button onClick={handleContinue}>Continue</button>
+            )}
+            <button onClick={handleReset}>Reset</button>
+          </>
+        )}
       </div>
     </div>
   );
