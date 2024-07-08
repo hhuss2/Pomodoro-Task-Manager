@@ -21,8 +21,8 @@ body {
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    min-width: 500px;
-    min-height: 500px;
+    min-width: 400px;
+    min-height: 400px;
   }
   
   h2 {
