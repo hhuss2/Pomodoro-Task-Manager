@@ -4,6 +4,7 @@ import './BreakSessionTimer.css';
 const BreakSessionTimer = ({ defaultDuration, onStart }) => {
   const [timeLeft, setTimeLeft] = useState(defaultDuration * 60);
   const [isRunning, setIsRunning] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     let timer;
@@ -22,6 +23,7 @@ const BreakSessionTimer = ({ defaultDuration, onStart }) => {
   const handleStart = () => {
     setIsRunning(prevIsRunning => !prevIsRunning);
     if (!isRunning) {
+      setHasStarted(true);
       onStart(timeLeft);
     }
   };
@@ -33,6 +35,7 @@ const BreakSessionTimer = ({ defaultDuration, onStart }) => {
   const handleReset = () => {
     setIsRunning(false);
     setTimeLeft(defaultDuration * 60);
+    setHasStarted(false);
   };
 
   const handleIncrease = () => {
@@ -63,7 +66,7 @@ const BreakSessionTimer = ({ defaultDuration, onStart }) => {
         ) : (
           <>
             <button onClick={handleStart}>
-              {timeLeft === defaultDuration * 60 ? 'Start Break' : 'Continue'}
+              {hasStarted ? 'Continue' : 'Start Break'}
             </button>
             <button onClick={handleReset}>Reset</button>
           </>
