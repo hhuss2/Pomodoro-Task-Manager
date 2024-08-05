@@ -266,7 +266,6 @@ app.delete('/users/me', authenticateToken, (req, res) => {
                             });
                         }
 
-                        // Commit transaction
                         connection.commit((err) => {
                             if (err) {
                                 console.error('Commit error:', err);
