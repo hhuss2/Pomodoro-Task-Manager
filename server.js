@@ -339,7 +339,7 @@ app.delete('/tasks/:id', authenticateToken, (req, res) => {
     });
 });
 
-// Get User's Tasks route
+// Get tasks route
 app.get('/tasks', authenticateToken, (req, res) => {
     pool.query('SELECT * FROM tasks WHERE user_id = ?', [req.user.id], (err, results) => {
         if (err) {
