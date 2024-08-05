@@ -94,26 +94,30 @@ const UserHome = () => {
         navigate('/');
     };
 
-
-    
     const handleDeleteAccount = async () => {
         const confirmation = window.confirm('Are you sure you want to delete your account?');
-    
+        
         if (!confirmation) return; 
     
         try {
-            const response = await axios.delete('https://pomodoro-task-manager-1be605d967d6.herokuapp.com/users/me', {
+            const token = localStorage.getItem('token');
+            console.log('Token:', token);
+    
+            const response = await axios.delete(`${API_URL}/users/me`, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                    Authorization: `Bearer ${token}`
                 }
             });
-            
+    
+            console.log('Response:', response);
+    
             localStorage.removeItem('token');
             window.location.href = '/login'; 
         } catch (error) {
-            console.error('Error deleting account:', error);
+            console.error('Error deleting account:', error.response || error.message || error);
         }
     };
+    
     
 
 
