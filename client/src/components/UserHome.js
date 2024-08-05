@@ -102,7 +102,7 @@ const UserHome = () => {
         if (!confirmation) return; 
     
         try {
-            await axios.delete('${API_URL}/users/me', {
+            await axios.delete(`${API_URL}/users/me`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`, 
                 }
