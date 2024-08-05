@@ -102,20 +102,18 @@ const UserHome = () => {
         if (!confirmation) return; 
     
         try {
-            await axios.delete(`${API_URL}/users/me`, {
+            const response = await axios.delete('https://pomodoro-task-manager-1be605d967d6.herokuapp.com/users/me', {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`, 
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
             
             localStorage.removeItem('token');
-            
             window.location.href = '/login'; 
         } catch (error) {
             console.error('Error deleting account:', error);
         }
     };
-    
     
 
 
