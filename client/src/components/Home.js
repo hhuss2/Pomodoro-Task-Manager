@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import './Home.css';
 import Timer from './Timer';
 import BreakSessionTimer from './BreakSessionTimer';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
+
+  const handleSignInClick = () => {
+    navigate('/login');
+  };
 
   const handleAddTask = () => {
     if (task.trim() === '') return;
@@ -30,8 +36,19 @@ const Home = () => {
     console.log(`Break session started with duration ${duration} seconds`);
   };
 
+ 
   return (
     <div className="home-page">
+      <div className="top-bar">
+        <div className="login-info">
+          <p className="login-message">
+            Log in to save your sessions.
+          </p>
+          <button className="sign-in-button" onClick={handleSignInClick}>
+            Sign In
+          </button>
+        </div>
+      </div>
       <div className="home-container">
         <h2>Pomodoro Task Manager</h2>
         <h3 className="break-session-heading">Set Break Session Duration</h3>
@@ -50,7 +67,6 @@ const Home = () => {
         </div>
 
         <div className="task-categories">
-          {/* Display tasks */}
           <div className="task-category">
             <h3>To Do</h3>
             <ul className="task-list">

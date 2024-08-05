@@ -1,0 +1,77 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto; 
+}
+
+.logout-button {
+  position: fixed; 
+  top: 10px; /* Space from the top */
+  right: 20px; /* Space from the right edge */
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #ffffff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.logout-button:hover {
+  background-color: #0056b3; 
+}
+
+.user-home .home-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 100px auto 10px; /* Adjust top margin to avoid overlap with the fixed logout button */
+  padding: 20px;
+  background-color: #ffffff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-height: calc(100vh - 60px); /* Ensure it doesn't exceed the viewport height minus the top margin */
+  overflow-y: auto; /* Allow vertical scrolling if content exceeds max-height */
+}
+
+
+.task-categories {
+  margin-top: 20px;
+}
+
+.task-category {
+  margin-bottom: 20px;
+}
+
+.task-category h3 {
+  margin-bottom: 10px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px; /* Space between tasks */
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  min-width: 200px; /* Set a minimum width for task items */
+}
+
+.task-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.task-actions {
+  display: flex; /* Align buttons horizontally */
+  gap: 8px; /* Space between buttons */
+  flex-wrap: wrap; /* Allow wrapping to avoid overflow */
+  margin-bottom: 10px; /* Space between buttons and timer */
+}
