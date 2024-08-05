@@ -26,12 +26,12 @@ html, body {
 .user-home .home-container {
   width: 90%;
   max-width: 1200px;
-  margin: 100px auto 10px; /* Adjust top margin to avoid overlap with the fixed logout button */
+  margin: 100px auto 10px; 
   padding: 20px;
   background-color: #ffffff; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  max-height: calc(100vh - 60px); /* Ensure it doesn't exceed the viewport height minus the top margin */
+  max-height: calc(100vh - 60px); 
   overflow-y: auto; /* Allow vertical scrolling if content exceeds max-height */
 }
 
@@ -74,4 +74,21 @@ html, body {
   gap: 8px; /* Space between buttons */
   flex-wrap: wrap; /* Allow wrapping to avoid overflow */
   margin-bottom: 10px; /* Space between buttons and timer */
+}
+.delete-account-button {
+  position: fixed; /* Fixed positioning for the button */
+  bottom: 20px; /* Space from the bottom of the viewport */
+  right: 20px; /* Space from the right edge of the viewport */
+  padding: 10px 20px;
+  background-color: gray; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+.delete-account-button:hover {
+  background-color: darkgray; 
 }

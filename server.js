@@ -196,7 +196,6 @@ app.post('/reset-password', (req, res) => {
                     return res.status(500).json({ error: 'Internal server error' });
                 }
 
-                // Optionally, delete the reset token
                 pool.query('DELETE FROM password_resets WHERE token = ?', [token], (err) => {
                     if (err) {
                         console.error('Database delete error:', err);
@@ -208,6 +207,85 @@ app.post('/reset-password', (req, res) => {
         });
     });
 });
+
+// Endpoint to delete user account
+app.delete('/users/me', authenticateToken, (req, res) => {
+    const userId = req.user.id;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Database connection error:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        connection.beginTransaction((err) => {
+            if (err) {
+                console.error('Transaction error:', err);
+                connection.release();
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+
+            // Delete associated tasks
+            connection.query('DELETE FROM tasks WHERE user_id = ?', [userId], (err) => {
+                if (err) {
+                    console.error('Error deleting user tasks:', err);
+                    return connection.rollback(() => {
+                        connection.release();
+                        res.status(500).json({ error: 'Internal server error' });
+                    });
+                }
+
+                // Delete password reset tokens
+                connection.query('DELETE FROM password_resets WHERE user_id = ?', [userId], (err) => {
+                    if (err) {
+                        console.error('Error deleting password reset tokens:', err);
+                        return connection.rollback(() => {
+                            connection.release();
+                            res.status(500).json({ error: 'Internal server error' });
+                        });
+                    }
+
+                    // Delete user
+                    connection.query('DELETE FROM users WHERE id = ?', [userId], (err, results) => {
+                        if (err) {
+                            console.error('Error deleting user:', err);
+                            return connection.rollback(() => {
+                                connection.release();
+                                res.status(500).json({ error: 'Internal server error' });
+                            });
+                        }
+
+                        if (results.affectedRows === 0) {
+                            return connection.rollback(() => {
+                                connection.release();
+                                res.status(404).json({ error: 'User not found' });
+                            });
+                        }
+
+                        // Commit transaction
+                        connection.commit((err) => {
+                            if (err) {
+                                console.error('Commit error:', err);
+                                return connection.rollback(() => {
+                                    connection.release();
+                                    res.status(500).json({ error: 'Internal server error' });
+                                });
+                            }
+
+                            connection.release();
+                            res.status(200).json({ message: 'Account successfully deleted' });
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
+
 
 // Logout route
 app.post('/logout', (req, res) => {

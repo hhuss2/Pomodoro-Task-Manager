@@ -94,6 +94,31 @@ const UserHome = () => {
         navigate('/');
     };
 
+
+    
+    const handleDeleteAccount = async () => {
+        const confirmation = window.confirm('Are you sure you want to delete your account?');
+    
+        if (!confirmation) return; 
+    
+        try {
+            await axios.delete('${API_URL}/users/me', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, 
+                }
+            });
+            
+            localStorage.removeItem('token');
+            
+            window.location.href = '/login'; 
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        }
+    };
+    
+    
+
+
     return (
         <div className="user-home">
             <button className="logout-button" onClick={handleLogout}>Logout</button>
@@ -155,6 +180,7 @@ const UserHome = () => {
             </div>
             <footer className="footer">
                 <p>Developed by Hamzeh Hussein</p>
+                <button className="delete-account-button" onClick={handleDeleteAccount}>Delete Account</button>
             </footer>
         </div>
     );
