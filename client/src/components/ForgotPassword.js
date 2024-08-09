@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
         await axios.post(`${API_URL}/forgot-password`, { email });
-        setMessage('Password reset instructions have been sent to your email.');
+        setMessage('Password reset instructions have been sent to your email. You may need to check your spam or junk folder.');
         setError(''); // Clear any previous errors
     } catch (error) {
         console.error('Error:', error.response?.data?.error || error.message);
