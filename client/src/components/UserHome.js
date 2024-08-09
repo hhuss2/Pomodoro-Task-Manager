@@ -158,7 +158,7 @@ const UserHome = () => {
                                             )}
                                             {status === 'working on' && (
                                                 <>
-                                                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'to do')}>Back to To Do</button>
+                                                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'to do')}>Back to To do</button>
                                                     <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'done')}>Complete</button>
                                                     <button className="action-button" onClick={() => handleDeleteTask(task.id)}>Delete</button>
                                                     <div className="timer-container">
@@ -168,7 +168,7 @@ const UserHome = () => {
                                             )}
                                             {status === 'done' && (
                                                 <>
-                                                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'to do')}>Back to To Do</button>
+                                                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'to do')}>Back to To do</button>
                                                     <button className="action-button" onClick={() => handleUpdateTaskStatus(task.id, 'working on')}>Start</button>
                                                     <button className="action-button" onClick={() => handleDeleteTask(task.id)}>Delete</button>
                                                 </>

@@ -89,7 +89,7 @@ const Home = () => {
                 <li key={task._id} className="task-item">
                   <span className="task-description">{task.description}</span>
                   <div className="task-actions">
-                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'to do')}>Back to To Do</button>
+                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'to do')}>Back to To do</button>
                     <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'done')}>Complete</button>
                     <button className="action-button" onClick={() => handleDeleteTask(task._id)}>Delete</button>
                   </div>
@@ -106,7 +106,7 @@ const Home = () => {
                 <li key={task._id} className="task-item">
                   <span className="task-description">{task.description}</span>
                   <div className="task-actions">
-                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'to do')}>Back to To Do</button>
+                    <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'to do')}>Back to To do</button>
                     <button className="action-button" onClick={() => handleUpdateTaskStatus(task._id, 'working on')}>Start Again</button>
                     <button className="action-button" onClick={() => handleDeleteTask(task._id)}>Delete</button>
                   </div>
