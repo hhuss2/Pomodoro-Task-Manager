@@ -68,7 +68,7 @@ const Home = () => {
 
         <div className="task-categories">
           <div className="task-category">
-            <h3>To Do</h3>
+            <h3>To do</h3>
             <ul className="task-list">
               {tasks.filter(task => task.status === 'to do').map(task => (
                 <li key={task._id} className="task-item">
@@ -83,7 +83,7 @@ const Home = () => {
           </div>
 
           <div className="task-category">
-            <h3>Working On</h3>
+            <h3>Working on</h3>
             <ul className="task-list">
               {tasks.filter(task => task.status === 'working on').map(task => (
                 <li key={task._id} className="task-item">
