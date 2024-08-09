@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-        const response = await axios.post(`${API_URL}/login`, {
+      const response = await axios.post(`${API_URL}/login`, {
         email,
         password,
       });
@@ -54,6 +54,7 @@ const Login = () => {
             />
           </label>
           <button type="submit" className="login-button">Sign In</button>
+          {error && <div className="error-message">{error}</div>}
         </form>
         <div className="login-footer">
           <p>
