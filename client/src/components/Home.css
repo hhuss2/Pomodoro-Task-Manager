@@ -20,11 +20,10 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding: 10px 20px;
-  position: sticky; /* sticks to top if page scrolls */
+  position: sticky; 
   top: 0;
   z-index: 100; /* ensure it stays above content */
 }
-
 
 .login-info {
   display: flex;
@@ -74,7 +73,6 @@ body {
   border-radius: 12px;
   overflow-y: auto; 
 }
-
 
 h2 {
   text-align: center;
