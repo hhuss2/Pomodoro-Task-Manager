@@ -18,20 +18,25 @@
   },
   "homepage": "https://github.com/hhuss2/Pomodoro-Task-Manager#readme",
   "dependencies": {
+    "@tootallnate/once": "^3.0.1",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "connect-pg-simple": "^9.0.1",
-    "connect-sqlite3": "^0.9.15",
+    "connect-sqlite3": "^0.9.17",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-mysql-session": "^3.0.3",
-    "express-session": "^1.18.0",
+    "express-session": "^1.19.0",
+    "ip-address": "^10.4.0",
     "jsonwebtoken": "^9.0.2",
+    "minimatch": "^10.2.6",
     "mysql2": "^3.11.0",
     "nodemailer": ">=9.0.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "tar": "^7.5.22",
+    "tar-fs": "^3.1.3"
   }
 }
