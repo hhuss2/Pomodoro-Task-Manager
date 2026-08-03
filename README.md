@@ -14,3 +14,8 @@
 - **Frontend**: React.js
 - **Backend**: Node.js, Express.js
 - **Database**: MySQL
+
+## Usage
+
+- Use the link provided to use the web application.
+https://pomodoro-task-manager-ec741b959fef.herokuapp.com/
