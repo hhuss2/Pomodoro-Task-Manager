@@ -29,7 +29,7 @@
     "express-session": "^1.19.0",
     "ip-address": ">=10.7.4",
     "jsonwebtoken": "^9.0.2",
-    "minimatch": "^10.2.6",
+    "minimatch": ">=11.0.1",
     "mysql2": ">=3.23.1",
     "nodemailer": ">=10.1.4",
     "passport": "^0.7.0",
